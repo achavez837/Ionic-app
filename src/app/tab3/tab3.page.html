@@ -1,0 +1,72 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> Notes & Lists </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Notes & Lists</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <div class="inputContainer">
+    <input
+      #newItem
+      type="text"
+      label="New List Item:"
+      placeholder="Begin Typing....."
+      fill="outline"
+      (keyup.enter)="addItem(newItem.value);"
+      id="listInput"
+    />
+
+    <ion-button
+      fill="solid"
+      (click)="addItem(newItem.value);"
+      id="addBtn"
+      shape="round"
+      class="ion-activatable"
+      >Add <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+      <!---Ion ripple effect. May need more troubleShooting--->
+    </ion-button>
+  </div>
+
+  <div class="btn-wrapper">
+    <ion-button
+      class="btn-menu"
+      [class.active]="filter == 'all'"
+      (click)="filter = 'all'"
+    >
+      All
+    </ion-button>
+
+    <ion-button
+      class="btn-menu"
+      [class.active]="filter == 'active'"
+      (click)="filter = 'active'"
+    >
+      To Do
+    </ion-button>
+
+    <ion-button
+      class="btn-menu"
+      [class.active]="filter == 'done'"
+      (click)="filter = 'done'"
+    >
+      Done
+    </ion-button>
+  </div>
+
+  <h2 class="itemsCounter">
+    {{ items.length }}
+    <span *ngIf="items.length === 1; else elseBlock">Item</span>
+    <ng-template #elseBlock>Items</ng-template>
+  </h2>
+  <hr id="hr" />
+  <ul>
+    <li *ngFor="let i of items" class="list">
+      <list-item (remove)="remove(i)" [item]="i"></list-item>
+    </li>
+  </ul>
+</ion-content>

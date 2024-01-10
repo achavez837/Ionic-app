@@ -1,0 +1,35 @@
+<div class="item">
+  <input
+    [id]="item.description"
+    type="checkbox"
+    (change)="item.done = !item.done"
+    [checked]="item.done"
+    class="itemCheckbox"
+  />
+  <label for="item.description">{{ item.description }}</label>
+
+  <div class="btn-wrapper" *ngIf="!editable">
+    <ion-button class="itemBtn" (click)="editable = !editable">Edit</ion-button>
+    <ion-button class="itemBtn" (click)="remove.emit()">Delete</ion-button>
+  </div>
+
+  <!-- This Section Shows up only on edit mode because of the *ngIf directive-->
+  <div *ngIf="editable">
+    <input
+      type="text"
+      placeholder="Edit Item"
+      [value]="item.description"
+      #editedItem
+      (keyup.enter)="saveItem(editedItem.value)"
+    />
+
+    <div class="btn-wrapper">
+      <ion-button class="itemBtn" (click)="editable = !editable"
+        >Cancel</ion-button
+      >
+      <ion-button class="itemBtn" (click)="saveItem(editedItem.value)"
+        >Save</ion-button
+      >
+    </div>
+  </div>
+</div>
