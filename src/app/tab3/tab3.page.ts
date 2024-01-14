@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Item } from '../item';
+import { FormsModule } from '@angular/forms';
+import { ItemComponent } from '../item/item.component';
 
 @Component({
   selector: 'app-item',
@@ -26,7 +28,7 @@ export class Tab3Page {
     );
   }
  newItemValue:string = '';
- 
+
   addItem(description: any) {
     if (description.length > 0) {
       this.allItems.push({

@@ -1,12 +1,12 @@
 <div class="item">
+  <form>
   <ion-checkbox
     [id]="item.description"
     (change)="item.done = !item.done"
     [checked]="item.done"
-    class="itemCheckbox"
     labelPlacement="end"
   >{{item.description}}</ion-checkbox>
-  
+  </form>
   
 
   <div class="btn-wrapper" *ngIf="!editable">
@@ -28,7 +28,7 @@
       <ion-button class="itemBtn" (click)="editable = !editable"
         >Cancel</ion-button
       >
-      <ion-button class="itemBtn" (click)="saveItem(editedItem.value)"
+      <ion-button class="itemBtn" (click)="saveItem(editedItemValue)"
         >Save</ion-button
       >
     </div>
