@@ -1,12 +1,13 @@
 <div class="item">
-  <input
+  <ion-checkbox
     [id]="item.description"
-    type="checkbox"
     (change)="item.done = !item.done"
     [checked]="item.done"
     class="itemCheckbox"
-  />
-  <label for="item.description">{{ item.description }}</label>
+    labelPlacement="end"
+  >{{item.description}}</ion-checkbox>
+  
+  
 
   <div class="btn-wrapper" *ngIf="!editable">
     <ion-button class="itemBtn" (click)="editable = !editable">Edit</ion-button>

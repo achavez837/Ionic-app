@@ -10,30 +10,30 @@
       <ion-title size="large">Notes & Lists</ion-title>
     </ion-toolbar>
   </ion-header>
-  <div class="inputContainer">
-    <form>
-    <ion-input
-      #newItem
-      type="text"
-      label="Add Item:"
-      placeholder="Begin Typing....."
-      fill="outline"
-      [(ngModel)]="newItemValue"
-      name="newItem"
-    />
+  <form>
+    <div class="inputContainer">
+      <ion-input
+        #newItem
+        type="text"
+        label="Add Item:"
+        placeholder="Begin Typing....."
+        fill="outline"
+        [(ngModel)]="newItemValue"
+        name="newItem"
+        (keyup.enter)="addItem(newItemValue)"
+      />
 
-    <ion-button
-      fill="solid"
-      (click)="addItem(newItemValue);"
-      id="addBtn"
-      shape="round"
-      class="ion-activatable"
-      >Add <ion-ripple-effect type="unbounded"></ion-ripple-effect>
-      <!---Ion ripple effect. May need more troubleShooting--->
-    </ion-button>
-    </form>
-  </div>
-
+      <ion-button
+        fill="solid"
+        (click)="addItem(newItemValue);"
+        id="addBtn"
+        shape="round"
+        class="ion-activatable"
+        >Add <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+        <!---Ion ripple effect. May need more troubleShooting--->
+      </ion-button>
+    </div>
+  </form>
   <div class="btn-wrapper">
     <ion-button
       class="btn-menu"
