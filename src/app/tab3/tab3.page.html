@@ -11,26 +11,27 @@
     </ion-toolbar>
   </ion-header>
   <div class="inputContainer">
-    <input
+    <form>
+    <ion-input
       #newItem
       type="text"
-      label="New List Item:"
+      label="Add Item:"
       placeholder="Begin Typing....."
       fill="outline"
-      (keyup.enter)="addItem(newItem.value);"
-      id="listInput"
       [(ngModel)]="newItemValue"
+      name="newItem"
     />
 
     <ion-button
       fill="solid"
-      (click)="addItem(newItem.value);"
+      (click)="addItem(newItemValue);"
       id="addBtn"
       shape="round"
       class="ion-activatable"
       >Add <ion-ripple-effect type="unbounded"></ion-ripple-effect>
       <!---Ion ripple effect. May need more troubleShooting--->
     </ion-button>
+    </form>
   </div>
 
   <div class="btn-wrapper">

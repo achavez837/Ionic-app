@@ -25,15 +25,19 @@ export class Tab3Page {
       this.filter === 'done' ? item.done : !item.done
     );
   }
-
-  addItem(description: string) {
+ newItemValue:string = '';
+ 
+  addItem(description: any) {
     if (description.length > 0) {
       this.allItems.push({
         description,
         done: false,
       });
     }
+    this.newItemValue = '';
   }
+
+ 
 
   remove(item: Item) {
     this.allItems.splice(this.allItems.indexOf(item), 1);
