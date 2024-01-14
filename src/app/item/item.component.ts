@@ -8,7 +8,7 @@ import { Item } from '../item';
 })
 export class ItemComponent implements OnInit {
   editable = false;
-
+  editedItemValue: string = '';
   @Input() item!: Item;
   @Output() remove = new EventEmitter<Item>();
   // An @Input() serves as a doorway for data to come into the component, and an @Output() acts as a doorway for data to go out of the component. An @Output() has to be of type EventEmitter, so that a component can raise an event when there's data ready to share with another component.

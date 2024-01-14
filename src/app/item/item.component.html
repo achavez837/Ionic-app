@@ -16,12 +16,13 @@
 
   <!-- This Section Shows up only on edit mode because of the *ngIf directive-->
   <div *ngIf="editable">
-    <input
+    <ion-input
+      name="editedItemValue"
       type="text"
       placeholder="Edit Item"
-      [value]="item.description"
       #editedItem
-      (keyup.enter)="saveItem(editedItem.value)"
+      (keyup.enter)="saveItem(editedItemValue)"
+      [(ngModel)]="editedItemValue"
     />
 
     <div class="btn-wrapper">
