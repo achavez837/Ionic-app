@@ -19,6 +19,7 @@
       fill="outline"
       (keyup.enter)="addItem(newItem.value);"
       id="listInput"
+      [(ngModel)]="newItemValue"
     />
 
     <ion-button
