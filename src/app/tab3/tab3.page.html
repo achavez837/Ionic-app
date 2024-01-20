@@ -19,10 +19,10 @@
         placeholder="Begin Typing....."
         fill="outline"
         [(ngModel)]="newItemValue"
-        name="newItem"
-        (keyup.enter)="addItem(newItemValue)"
+        name="newItem" 
+        (keyup.enter)="addItem(newItemValue);"
       />
-
+<!-- -->
       <ion-button
         fill="solid"
         (click)="addItem(newItemValue);"
@@ -68,7 +68,7 @@
   <hr id="hr" />
   <ul>
     <li *ngFor="let i of items" class="list">
-      <list-item (remove)="remove(i)" [item]="i"></list-item>
+      <list-item [item]="i"></list-item>
     </li>
   </ul>
 </ion-content>

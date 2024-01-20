@@ -1,7 +1,5 @@
-import { Component } from '@angular/core';
-import { Item } from '../item';
-import { FormsModule } from '@angular/forms';
-import { ItemComponent } from '../item/item.component';
+import { Component, OnInit } from '@angular/core';
+import { ItemsService } from '../services/items.service';
 
 @Component({
   selector: 'app-item',
@@ -12,38 +10,28 @@ import { ItemComponent } from '../item/item.component';
 export class Tab3Page {
   filter: 'all' | 'active' | 'done' = 'all';
 
-  allItems = [
-    { description: 'Drink Coffee', done: true },
-    { description: 'Sleep', done: false },
-    { description: 'Play Minecraft', done: false },
-    { description: 'Feed the Cats', done: false },
-  ];
+  constructor(private itemsService: ItemsService) {}
 
   get items() {
-    if (this.filter === 'all') {
-      return this.allItems;
-    }
-    return this.allItems.filter((item) =>
-      this.filter === 'done' ? item.done : !item.done
-    );
+   const allItems = this.itemsService.getItems();
+   if (this.filter === 'all') {
+     return allItems;
+   } 
+   return allItems.filter((item) => this.filter === 'done' ? item.done : !item.done);
   }
- newItemValue:string = '';
+
+  newItemValue = '';
 
   addItem(description: any) {
-    if (description.length > 0) {
-      this.allItems.push({
-        description,
-        done: false,
-      });
-    }
+    if (!description) return;
+    this.itemsService.addItem({
+      description,
+      done: false,
+    });
     this.newItemValue = '';
   }
-
  
-
-  remove(item: Item) {
-    this.allItems.splice(this.allItems.indexOf(item), 1);
+  ngOnInit() {
   }
 
-  constructor() {}
 }

@@ -2,7 +2,7 @@
   <form>
   <ion-checkbox
     [id]="item.description"
-    (change)="item.done = !item.done"
+    (change)="toggleDone(item)"
     [checked]="item.done"
     labelPlacement="end"
   >{{item.description}}</ion-checkbox>
@@ -11,7 +11,7 @@
 
   <div class="btn-wrapper" *ngIf="!editable">
     <ion-button class="itemBtn" (click)="editable = !editable">Edit</ion-button>
-    <ion-button class="itemBtn" (click)="remove.emit()">Delete</ion-button>
+    <ion-button class="itemBtn" (click)="removeItem(item)">Delete</ion-button>
   </div>
 
   <!-- This Section Shows up only on edit mode because of the *ngIf directive-->
